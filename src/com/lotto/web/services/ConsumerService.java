@@ -5,6 +5,8 @@ import com.lotto.web.domains.ConsumerBean;
 public interface ConsumerService {
 	
 	public void registerConsumer(ConsumerBean param);
+
+	public ConsumerBean login(ConsumerBean param);
 	
 
 }

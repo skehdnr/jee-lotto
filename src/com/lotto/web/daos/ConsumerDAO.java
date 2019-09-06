@@ -4,4 +4,6 @@ import com.lotto.web.domains.ConsumerBean;
 
 public interface ConsumerDAO {
 	public void insertConsumer(ConsumerBean param);
+
+	public ConsumerBean login(ConsumerBean param);
 }

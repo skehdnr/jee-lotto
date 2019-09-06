@@ -20,6 +20,7 @@ public class ConsumerController extends HttpServlet {
 		System.out.println("Consumer 로 들어옴 ");
 		String cid = request.getParameter("cid");
 		String pass = request.getParameter("pass");
+		ConsumerService service = new ConsumerServiceImpl();
 		ConsumerBean param = new ConsumerBean();
 		
 		String dest = request.getParameter("desk");
@@ -32,18 +33,32 @@ public class ConsumerController extends HttpServlet {
 			break;
 		case "join" :
 			System.out.println("확인2");
-//			param.setCid(cid);
-//			param.setPass(pass);
-//			ConsumerService service = new ConsumerServiceImpl();
-//			service.registerConsumer(param);
-//			response.getWriter().append("Served at: ").append(request.getContextPath());
+			param.setCid(cid);
+			param.setPass(pass);
+			System.out.println(cid+pass);
+			
+			service.registerConsumer(param);
 			request.getRequestDispatcher
 			(String.format(Constant.VIEW_PATH,"consumer",request.getParameter("dest")))
 			.forward(request, response);
 			System.out.println("확인1");
 			break;
 		case "login" :
-			System.out.println("rrk");
+			cid = request.getParameter("id");
+			pass = request.getParameter("pass");
+			System.out.println("ddd");
+			if(service.login(param).getCid().equals(cid)&&service.login(param).getPass().equals(pass)) {
+				request.setAttribute("customer", param);
+				request.getRequestDispatcher
+				(String.format(Constant.VIEW_PATH,"consumer",request.getParameter("dest")))
+				.forward(request, response);
+			}else{
+				request.getRequestDispatcher
+				(String.format(Constant.VIEW_PATH,"consumer",request.getParameter("action")))
+				.forward(request, response);
+			}
+			System.out.println(service.login(param).getCid());
+			System.out.println(service.login(param).getPass());
 			break;
 		}
 	}

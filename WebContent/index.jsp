@@ -13,11 +13,11 @@
    <table border='1'>
       <tr>
           <td>로그인</td>
-          <td><input id="btn"   type="button" value="LOGIN" /></td>
+          <td><input id="btn" type="button" value="LOGIN" /></td>
       </tr>
       <tr>
           <td>회원가입</td>
-          <td><a id="a_join"   href="#">바로가기</a></td>
+          <td><a id="a_join" href="#">바로가기</a></td>
       </tr>
    </table>
    
